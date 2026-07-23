@@ -207,17 +207,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .cta .desc{color:rgba(243,243,243,.75);max-width:360px}
 
 /* ============================ FOOTER ============================ */
-.footer{background:#000;border-top:1px solid rgba(255,255,255,.08);padding:80px 0 40px}
+.footer{background:var(--blue);border-top:1px solid rgba(255,255,255,.15);padding:80px 0 40px}
 .footer-grid{display:grid;grid-template-columns:.6fr 2fr;gap:40px;margin-bottom:44px}
 .footer-logo svg{width:80px;height:auto}
-.footer-links{display:grid;grid-template-columns:repeat(5,1fr);gap:32px}
-.f-col h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.06em;color:rgba(255,255,255,.45);margin-bottom:18px;font-weight:500}
-.f-col li{margin-bottom:12px}
-.f-col a{font-size:.95rem;color:rgba(255,255,255,.82);position:relative;display:inline-block;transition:color .25s,transform .25s var(--ease-db)}
-.f-col a:hover{color:#fff;transform:translateX(6px)}
-.disclosure{padding-top:28px;border-top:1px solid rgba(255,255,255,.08);font-size:.78rem;color:rgba(243,243,243,.45);
+.footer-links{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
+.f-col h4{font-size:.85rem;text-transform:none;letter-spacing:.01em;color:rgba(255,255,255,.55);margin-bottom:22px;font-weight:500}
+.f-col li{margin-bottom:20px}
+.f-col a{font-size:1.15rem;font-weight:600;color:#fff;position:relative;display:inline-block;transition:opacity .25s,transform .25s var(--ease-db)}
+.f-col a:hover{opacity:.75;transform:translateX(6px)}
+.disclosure{padding-top:28px;border-top:1px solid rgba(255,255,255,.15);font-size:.78rem;color:rgba(255,255,255,.7);
   line-height:1.7;max-width:840px;margin-bottom:44px}
-.disclosure a{color:rgba(243,243,243,.7);text-decoration:underline;text-underline-offset:2px}
+.disclosure a{color:rgba(255,255,255,.9);text-decoration:underline;text-underline-offset:2px}
 .disclosure a:hover{color:#fff}
 .footer-word{width:100%;opacity:.95}
 .footer-word svg{width:100%;height:auto}
@@ -228,7 +228,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   .stats{grid-template-columns:1fr 1fr}
   .stat:nth-child(2n){border-right:none}
   .footer-grid{grid-template-columns:1fr}
-  .footer-links{grid-template-columns:repeat(3,1fr)}
+  .footer-links{grid-template-columns:repeat(2,1fr)}
   .cards-grid{grid-template-columns:repeat(2,1fr)}
 }
 @media(max-width:767px){
@@ -237,7 +237,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   .nav .docs{display:none}
   .stats{grid-template-columns:1fr}
   .stat{border-right:none;border-bottom:1px solid var(--ink-2)}
-  .footer-links{grid-template-columns:1fr 1fr}
+  .footer-links{grid-template-columns:1fr}
   .cards-grid,.cards-grid.cards-3{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
@@ -426,19 +426,21 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
         <svg viewBox="0 0 88 59" fill="none"><path d="M87.1494 32.2275C87.1494 46.7373 75.3867 58.4998 60.877 58.5H0V32.2275H87.1494ZM60.877 0C75.3867 0.000198623 87.1493 11.7627 87.1494 26.2725H0V0H60.877Z" fill="white"/></svg>
       </div>
       <div class="footer-links">
-        <div class="f-col"><h4>Products</h4><ul>
-          <li><a href="#predict">Predict</a></li><li><a href="#spot">Spot</a></li><li><a href="#">DEEP Token</a></li></ul></div>
         <div class="f-col"><h4>Trade</h4><ul>
-          <li><a href="https://app.deepbook.tech">Start Trading</a></li><li><a href="#programmatic">API access</a></li></ul></div>
-        <div class="f-col"><h4>Learn</h4><ul>
-          <li><a href="#">Education Hub</a></li><li><a href="#">Announcements</a></li></ul></div>
-        <div class="f-col" id="footer-resources"><h4>Resources</h4><ul>
+          <li><a href="https://app.deepbook.tech">Launch App</a></li>
+          <li><a href="#">DEEP Token</a></li>
+          <li><a href="#programmatic">API access</a></li>
+          <li><a href="#predict">Predict</a></li></ul></div>
+        <div class="f-col"><h4>Build</h4><ul>
           <li><a href="https://docs.sui.io/onchain-finance/deepbookv3/deepbook" target="_blank" rel="noopener">Docs</a></li>
           <li><a href="https://github.com/MystenLabs/deepbookv3" target="_blank" rel="noopener">GitHub</a></li>
+          <li><a href="https://www.sui.io/moonshots" target="_blank" rel="noopener">Moonshots</a></li></ul></div>
+        <div class="f-col" id="footer-resources"><h4>Resources</h4><ul>
           <li><a href="https://github.com/sui-foundation/security-audits/blob/main/docs/deepbook_v3_audit_final.pdf" target="_blank" rel="noopener">Audit</a></li>
           <li><a href="https://hackenproof.com/programs/sui-protocol" target="_blank" rel="noopener">Bug Bounty</a></li>
           <li><a href="https://www.deepbook.tech/media-kit" target="_blank" rel="noopener">Media Kit</a></li>
-          <li><a href="#">Points</a></li></ul></div>
+          <li><a href="#">Points</a></li>
+          <li><a href="#">Blog</a></li></ul></div>
         <div class="f-col"><h4>Community</h4><ul>
           <li><a href="https://discord.com/invite/deepbook" target="_blank" rel="noopener">Discord</a></li>
           <li><a href="https://x.com/DeepBookonSui" target="_blank" rel="noopener">X / Twitter</a></li></ul></div>
