@@ -210,6 +210,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .footer{background:var(--blue);border-top:1px solid rgba(255,255,255,.15);padding:80px 0 40px}
 .footer-grid{display:grid;grid-template-columns:.6fr 2fr;gap:40px;margin-bottom:44px}
 .footer-logo svg{width:80px;height:auto}
+.footer-sui{display:inline-flex;align-items:center;gap:6px;margin-top:22px;font-size:.9rem;font-weight:500;color:rgba(255,255,255,.85);transition:opacity .25s}
+.footer-sui:hover{opacity:.7}
 .footer-links{display:grid;grid-template-columns:repeat(4,1fr);gap:32px}
 .f-col h4{font-size:.85rem;text-transform:none;letter-spacing:.01em;color:rgba(255,255,255,.55);margin-bottom:22px;font-weight:500}
 .f-col li{margin-bottom:20px}
@@ -328,7 +330,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
     <div class="stat b-white"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="41.2" data-suffix="M" data-prefix="$">$41.2M</span><span class="lab">24h volume</span></div>
     <div class="stat b-black"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-volume-count>$20B+</span><span class="lab">Cumulative volume</span></div>
     <div class="stat b-grey"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="125.7" data-suffix="M">125.7M</span><span class="lab">DEEP Burnt from Trading Fees</span></div>
-    <div class="stat b-darkgrey"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="15" data-suffix="+">15+</span><span class="lab">Apps routing through DeepBook</span></div>
+    <div class="stat b-darkgrey"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="120" data-suffix="K+">120K+</span><span class="lab">On the app waitlist</span></div>
   </div>
 </section>
 
@@ -355,6 +357,20 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
     <h2 data-reveal>One book. Every venue on Sui.</h2>
     <p class="lede" data-reveal>Orders route through the same order book that powers trading across the Sui ecosystem. Depth compounds instead of fragmenting, so the book you trade on gets deeper as the ecosystem grows.</p>
     <a href="https://app.deepbook.tech" class="btn btn--ghost" data-reveal data-cta="primary" data-analytics="spot-primary">Start Trading</a>
+  </div>
+</section>
+
+<!-- ===================== PROGRAMMATIC ACCESS ===================== -->
+<section class="sect" id="programmatic">
+  <div class="container">
+    <div class="sect-label">Programmatic access</div>
+    <h2 data-reveal>Run your own strategy against the book.</h2>
+    <p class="lede" data-reveal>Full API and SDK access from day one, with indexer endpoints and direct market-maker onboarding. No allowlist required to start reading the book.</p>
+    <div class="cards-grid cards-3" data-reveal>
+      <div class="card"><span class="k">01</span><h3>API &amp; SDK</h3><p>Place, cancel, and settle orders directly against DeepBook.</p></div>
+      <div class="card"><span class="k">02</span><h3>Indexer</h3><p>Historical fills, depth snapshots, and market data endpoints.</p></div>
+      <div class="card"><span class="k">03</span><h3>Market makers</h3><p>Direct onboarding for desks and programmatic liquidity providers.</p></div>
+    </div>
   </div>
 </section>
 
@@ -390,20 +406,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   </div>
 </section>
 
-<!-- ===================== PROGRAMMATIC ACCESS ===================== -->
-<section class="sect" id="programmatic">
-  <div class="container">
-    <div class="sect-label">Programmatic access</div>
-    <h2 data-reveal>Run your own strategy against the book.</h2>
-    <p class="lede" data-reveal>Full API and SDK access from day one, with indexer endpoints and direct market-maker onboarding. No allowlist required to start reading the book.</p>
-    <div class="cards-grid cards-3" data-reveal>
-      <div class="card"><span class="k">01</span><h3>API &amp; SDK</h3><p>Place, cancel, and settle orders directly against DeepBook.</p></div>
-      <div class="card"><span class="k">02</span><h3>Indexer</h3><p>Historical fills, depth snapshots, and market data endpoints.</p></div>
-      <div class="card"><span class="k">03</span><h3>Market makers</h3><p>Direct onboarding for desks and programmatic liquidity providers.</p></div>
-    </div>
-  </div>
-</section>
-
 <!-- ===================== CLOSING CTA ===================== -->
 <div class="divider"><div class="line"></div><div class="cubes"><div class="inner"><div class="cube"></div><div class="cube"></div></div></div></div>
 <section class="cta">
@@ -424,22 +426,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
     <div class="footer-grid">
       <div class="footer-logo">
         <svg viewBox="0 0 88 59" fill="none"><path d="M87.1494 32.2275C87.1494 46.7373 75.3867 58.4998 60.877 58.5H0V32.2275H87.1494ZM60.877 0C75.3867 0.000198623 87.1493 11.7627 87.1494 26.2725H0V0H60.877Z" fill="white"/></svg>
+        <a href="https://sui.io" target="_blank" rel="noopener" class="footer-sui">Built on Sui &#8599;</a>
       </div>
       <div class="footer-links">
         <div class="f-col"><h4>Trade</h4><ul>
           <li><a href="https://app.deepbook.tech">Launch App</a></li>
-          <li><a href="#">DEEP Token</a></li>
-          <li><a href="#programmatic">API access</a></li>
-          <li><a href="#predict">Predict</a></li></ul></div>
+          <li><a href="#spot">Spot</a></li>
+          <li><a href="#predict">Predict</a></li>
+          <li><a href="#programmatic">API access</a></li></ul></div>
         <div class="f-col"><h4>Build</h4><ul>
           <li><a href="https://docs.sui.io/onchain-finance/deepbookv3/deepbook" target="_blank" rel="noopener">Docs</a></li>
           <li><a href="https://github.com/MystenLabs/deepbookv3" target="_blank" rel="noopener">GitHub</a></li>
-          <li><a href="https://www.sui.io/moonshots" target="_blank" rel="noopener">Moonshots</a></li></ul></div>
-        <div class="f-col" id="footer-resources"><h4>Resources</h4><ul>
           <li><a href="https://github.com/sui-foundation/security-audits/blob/main/docs/deepbook_v3_audit_final.pdf" target="_blank" rel="noopener">Audit</a></li>
-          <li><a href="https://hackenproof.com/programs/sui-protocol" target="_blank" rel="noopener">Bug Bounty</a></li>
+          <li><a href="https://hackenproof.com/programs/sui-protocol" target="_blank" rel="noopener">Bug Bounty</a></li></ul></div>
+        <div class="f-col" id="footer-resources"><h4>Resources</h4><ul>
+          <li><a href="#">DEEP Token</a></li>
           <li><a href="https://www.deepbook.tech/media-kit" target="_blank" rel="noopener">Media Kit</a></li>
-          <li><a href="#">Points</a></li>
           <li><a href="#">Blog</a></li></ul></div>
         <div class="f-col"><h4>Community</h4><ul>
           <li><a href="https://discord.com/invite/deepbook" target="_blank" rel="noopener">Discord</a></li>
