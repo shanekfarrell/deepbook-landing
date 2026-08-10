@@ -169,6 +169,60 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .card h3{font-size:1.05rem;font-weight:600;letter-spacing:-.01em;margin-bottom:10px;line-height:1.3}
 .card p{font-size:.9rem;color:rgba(243,243,243,.58);line-height:1.55}
 
+/* ============================ PREDICT (PINNED CAROUSEL) ============================ */
+.predict{position:relative;background:#000}
+.predict-track{position:relative;height:360vh}
+.predict-stage{position:sticky;top:0;height:100vh;display:flex;align-items:center;overflow:hidden}
+.predict-grid{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--ink-2);border-radius:4px;overflow:hidden;width:100%}
+/* left blue panel */
+.predict-left{position:relative;background:var(--blue);color:var(--paper);padding:56px 44px;min-height:70vh;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.predict-left .plus{position:absolute;width:12px;height:12px;opacity:.9}
+.predict-left .plus.tl{top:16px;left:16px}.predict-left .plus.tr{top:16px;right:16px}
+.predict-left .plus.bl{bottom:16px;left:16px}.predict-left .plus.br{bottom:16px;right:16px}
+.predict-eyebrow{position:absolute;top:48px;left:0;right:0;text-align:center;font-size:.9rem;color:rgba(255,255,255,.8)}
+.predict-heads{position:relative;width:100%;max-width:480px;min-height:140px;display:flex;align-items:center;justify-content:center}
+.predict-heads .ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:clamp(1.8rem,3.2vw,2.6rem);font-weight:600;letter-spacing:-.02em;line-height:1.1;
+  opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none}
+.predict-heads .ph.active{opacity:1;transform:none}
+.predict-progress{position:absolute;bottom:44px;left:0;right:0;display:flex;gap:8px;justify-content:center}
+.pseg{width:38px;height:4px;border-radius:2px;background:rgba(255,255,255,.3);cursor:pointer;transition:background .3s}
+.pseg.active{background:#fff}
+/* right dark framed panel */
+.predict-right{position:relative;background:var(--ink);display:flex;align-items:center;justify-content:center;padding:56px 40px;overflow:hidden}
+.predict-right .dots-bg{position:absolute;inset:0;opacity:.14;background-image:radial-gradient(rgba(255,255,255,.6) 1.3px,transparent 1.3px);background-size:26px 26px}
+.predict-frame{position:relative;z-index:2;width:100%;max-width:520px;aspect-ratio:4/3;background:#fff;border-radius:6px;overflow:hidden}
+.pcard{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:16px;padding:44px 48px;
+  opacity:0;transform:translateY(14px);transition:opacity .5s var(--ease),transform .5s var(--ease);pointer-events:none}
+.pcard.active{opacity:1;transform:none;pointer-events:auto}
+.pcard .pnum{font-size:3.4rem;font-weight:700;letter-spacing:-.03em;color:var(--blue);line-height:1}
+.pcard h3{display:none;font-size:1.25rem;font-weight:600;color:#0b0b0b;letter-spacing:-.01em}
+.pcard p{font-size:1rem;line-height:1.5;color:rgba(0,0,0,.6)}
+/* accordion */
+.predict-foot{padding:40px var(--pad) 120px}
+.predict-faq{max-width:820px;margin:0 auto;border-top:1px solid var(--ink-2)}
+.faq-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:30px 0;font-size:clamp(1.1rem,2vw,1.45rem);font-weight:600;letter-spacing:-.01em;color:#fff;text-align:left}
+.faq-toggle .chev{flex:0 0 auto;width:22px;height:22px;color:var(--blue);transition:transform .35s var(--ease)}
+.faq-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.faq-panel{overflow:hidden;max-height:0;transition:max-height .45s var(--ease)}
+.faq-panel p{padding:0 0 34px;font-size:1.05rem;line-height:1.6;color:rgba(243,243,243,.62);max-width:700px}
+@media(max-width:900px){
+  .predict-track{height:auto}
+  .predict-stage{position:static;height:auto;display:block;overflow:visible}
+  .predict-grid{grid-template-columns:1fr}
+  .predict-left{min-height:auto;padding:56px 32px 64px}
+  .predict-eyebrow{position:static;font-size:1.4rem;font-weight:600;color:#fff;margin-bottom:0}
+  .predict-heads,.predict-progress{display:none}
+  .predict-right{padding:28px 20px}
+  .predict-frame{aspect-ratio:auto;max-width:none}
+  .pcard{position:static;opacity:1;transform:none;padding:26px 26px;gap:10px;border-bottom:1px solid rgba(0,0,0,.1)}
+  .pcard:last-child{border-bottom:none}
+  .pcard h3{display:block}
+  .pcard .pnum{font-size:2rem}
+}
+
 /* video / walkthrough panel */
 .walk{position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.14);border-radius:6px;
   background-image:url('assets/trading-app.png');background-size:cover;background-position:center 30%;
@@ -245,6 +299,17 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
   .ticker-track{animation:none!important;transform:none!important}
+  /* unpin the Predict carousel and stack it, so no scroll-jacking */
+  .predict-track{height:auto!important}
+  .predict-stage{position:static!important;height:auto!important;display:block!important;overflow:visible!important}
+  .predict-grid{grid-template-columns:1fr!important}
+  .predict-left{min-height:auto!important;padding:56px 32px 64px!important}
+  .predict-eyebrow{position:static!important;font-size:1.4rem;font-weight:600;color:#fff}
+  .predict-heads,.predict-progress{display:none!important}
+  .predict-frame{aspect-ratio:auto!important;max-width:none!important}
+  .pcard{position:static!important;opacity:1!important;transform:none!important;padding:26px!important;gap:10px;border-bottom:1px solid rgba(0,0,0,.1)}
+  .pcard:last-child{border-bottom:none}
+  .pcard h3{display:block!important}
 }
 </style>
 </head>
@@ -336,16 +401,52 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 
 <!-- ===================== PREDICT ===================== -->
 <div class="divider"><div class="line"></div><div class="cubes"><div class="inner"><div class="cube"></div><div class="cube"></div></div></div></div>
-<section class="sect" id="predict">
-  <div class="container">
-    <div class="sect-label">Predict</div>
-    <h2 data-reveal>Every price is tradable.</h2>
-    <p class="lede" data-reveal>Most prediction markets ask a single yes-or-no question, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. Predict quotes any level, like 94,820 right now, in any direction, across timeframes from one minute to a month. A single pool stands behind every quote, which is how the whole range stays open.</p>
-    <div class="cards-grid" data-reveal>
-      <div class="card"><span class="k">01</span><h3>Any price level</h3><p>Continuous pricing across the range, so the levels worth trading stay open instead of sitting at zero or one hundred.</p></div>
-      <div class="card"><span class="k">02</span><h3>Range markets</h3><p>Take a position on where the price lands inside a band, or on either direction out of it.</p></div>
-      <div class="card"><span class="k">03</span><h3>Leverage in the contract</h3><p>Financing sits inside the position itself. No margin call, no debt, and the downside stops at zero.</p></div>
-      <div class="card"><span class="k">04</span><h3>One pool behind every quote</h3><p>A single pool is counterparty to every trade. The nearest traditional equivalent is a custom quote from a desk, priced automatically onchain.</p></div>
+<section class="predict" id="predict">
+  <div class="predict-track" data-slides="4">
+    <div class="predict-stage">
+      <div class="container">
+        <div class="predict-grid">
+          <div class="predict-left">
+            <svg class="plus tl" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <svg class="plus tr" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <svg class="plus bl" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <svg class="plus br" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <span class="predict-eyebrow">Every price is tradable</span>
+            <div class="predict-heads">
+              <h2 class="ph active">Any price level</h2>
+              <h2 class="ph">Range markets</h2>
+              <h2 class="ph">Leverage in the contract</h2>
+              <h2 class="ph">One pool behind every quote</h2>
+            </div>
+            <div class="predict-progress">
+              <button class="pseg active" aria-label="Show slide 1"></button>
+              <button class="pseg" aria-label="Show slide 2"></button>
+              <button class="pseg" aria-label="Show slide 3"></button>
+              <button class="pseg" aria-label="Show slide 4"></button>
+            </div>
+          </div>
+          <div class="predict-right">
+            <div class="dots-bg"></div>
+            <div class="predict-frame">
+              <div class="pcard active"><span class="pnum">01</span><h3>Any price level</h3><p>Continuous pricing across the range, so the levels worth trading stay open instead of sitting at zero or one hundred.</p></div>
+              <div class="pcard"><span class="pnum">02</span><h3>Range markets</h3><p>Take a position on where the price lands inside a band, or on either direction out of it.</p></div>
+              <div class="pcard"><span class="pnum">03</span><h3>Leverage in the contract</h3><p>Financing sits inside the position itself. No margin call, no debt, and the downside stops at zero.</p></div>
+              <div class="pcard"><span class="pnum">04</span><h3>One pool behind every quote</h3><p>A single pool is counterparty to every trade. The nearest traditional equivalent is a custom quote from a desk, priced automatically onchain.</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="predict-foot">
+    <div class="predict-faq" data-reveal>
+      <button class="faq-toggle" id="predict-faq-toggle" aria-expanded="false" aria-controls="predict-faq-panel">
+        <span>How does Predict differ from other prediction markets?</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <div class="faq-panel" id="predict-faq-panel" role="region" aria-labelledby="predict-faq-toggle">
+        <p>Most prediction markets ask a single yes-or-no question, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. Predict quotes any level, like 94,820 right now, in any direction, across timeframes from one minute to a month. A single pool stands behind every quote, which is how the whole range stays open.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -565,6 +666,63 @@ const MARKET_DATA = [
     es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
   },{threshold:.15});
   document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+})();
+
+/* ===================== PREDICT PINNED CAROUSEL ===================== */
+(function(){
+  const track=document.querySelector('.predict-track');
+  if(!track)return;
+  const heads=[...document.querySelectorAll('.predict-heads .ph')];
+  const cards=[...document.querySelectorAll('.pcard')];
+  const segs=[...document.querySelectorAll('.pseg')];
+  const n=heads.length;
+  const mqStack=window.matchMedia('(max-width:900px)');
+  const mqReduce=window.matchMedia('(prefers-reduced-motion:reduce)');
+  const isStatic=()=>mqStack.matches||mqReduce.matches;
+  let cur=-1;
+  function setActive(i){
+    i=Math.max(0,Math.min(n-1,i));
+    if(i===cur)return;cur=i;
+    heads.forEach((h,k)=>h.classList.toggle('active',k===i));
+    cards.forEach((c,k)=>c.classList.toggle('active',k===i));
+    segs.forEach((s,k)=>s.classList.toggle('active',k===i));
+  }
+  function scrollable(){return track.offsetHeight-window.innerHeight;}
+  function update(){
+    if(isStatic())return;
+    const s=scrollable();
+    const progressed=Math.min(Math.max(-track.getBoundingClientRect().top,0),s);
+    const p=s>0?progressed/s:0;
+    setActive(Math.floor(p*n));
+  }
+  segs.forEach((seg,i)=>seg.addEventListener('click',()=>{
+    if(isStatic()){setActive(i);return;}
+    const s=scrollable();
+    const y=window.scrollY+track.getBoundingClientRect().top+((i+0.5)/n)*s;
+    window.scrollTo({top:y,behavior:mqReduce.matches?'auto':'smooth'});
+  }));
+  let ticking=false;
+  window.addEventListener('scroll',()=>{
+    if(ticking)return;ticking=true;
+    requestAnimationFrame(()=>{update();ticking=false;});
+  },{passive:true});
+  window.addEventListener('resize',update);
+  setActive(0);update();
+})();
+
+/* ===================== PREDICT FAQ ACCORDION ===================== */
+(function(){
+  const t=document.getElementById('predict-faq-toggle');
+  if(!t)return;
+  const panel=document.getElementById('predict-faq-panel');
+  t.addEventListener('click',()=>{
+    const open=t.getAttribute('aria-expanded')==='true';
+    t.setAttribute('aria-expanded',String(!open));
+    panel.style.maxHeight=open?'0px':panel.scrollHeight+'px';
+  });
+  window.addEventListener('resize',()=>{
+    if(t.getAttribute('aria-expanded')==='true')panel.style.maxHeight=panel.scrollHeight+'px';
+  });
 })();
 
 /* ===================== COUNT UP STATS ===================== */
