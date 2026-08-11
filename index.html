@@ -173,7 +173,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .predict{position:relative;background:#000}
 .opt-label{max-width:var(--container);margin:0 auto;padding:34px var(--pad) 0;font-size:.78rem;letter-spacing:.06em;
   text-transform:uppercase;color:var(--grey)}
-.predict-track{position:relative;height:240vh}
+.predict-track{position:relative;height:320vh}
 .predict-stage{position:sticky;top:0;height:100vh;overflow:hidden}
 .feat-slide{position:absolute;inset:0;display:flex;align-items:center;padding:0 var(--pad);
   opacity:0;transform:translateY(16px);transition:opacity .55s var(--ease),transform .55s var(--ease);pointer-events:none}
@@ -194,6 +194,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   font-size:1.05rem;color:rgba(243,243,243,.92);line-height:1.35}
 .feat-points li:last-child{border-bottom:1px solid rgba(255,255,255,.09)}
 .feat-points li .fb{width:13px;height:13px;background:var(--blue);flex:0 0 auto;margin-top:5px}
+.feat-card--text{gap:0}
+.feat-q{font-size:clamp(1.15rem,1.9vw,1.55rem);font-weight:600;color:#fff;letter-spacing:-.01em;margin-bottom:16px;line-height:1.28}
+.feat-a{font-size:1rem;line-height:1.6;color:rgba(243,243,243,.72)}
 .predict-progress{position:absolute;bottom:40px;left:0;right:0;display:flex;gap:8px;justify-content:center;z-index:5}
 .pseg{width:44px;height:4px;border-radius:2px;background:rgba(255,255,255,.28);cursor:pointer;transition:background .3s}
 .pseg.active{background:var(--blue)}
@@ -218,6 +221,14 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .fc-item{display:flex;gap:16px;align-items:flex-start;padding:24px 26px;border:1px solid var(--ink-2);border-radius:6px;background:#0c0c0c}
 .fc-item .fb{width:14px;height:14px;background:var(--blue);flex:0 0 auto;margin-top:4px}
 .fc-item p{font-size:1.05rem;color:rgba(243,243,243,.92);line-height:1.4}
+.fc-item--drop{padding:0;background:rgba(30,110,243,.10);border-color:rgba(30,110,243,.5)}
+.fc-drop-toggle{width:100%;display:flex;align-items:flex-start;gap:16px;padding:24px 26px;text-align:left;color:#fff}
+.fc-drop-toggle .fb{margin-top:4px}
+.fc-drop-q{flex:1;font-size:1.05rem;font-weight:600;line-height:1.35}
+.fc-drop-toggle .chev{flex:0 0 auto;width:20px;height:20px;color:var(--blue-bright);transition:transform .35s var(--ease);margin-top:2px}
+.fc-drop-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.fc-drop-panel{overflow:hidden;max-height:0;transition:max-height .45s var(--ease)}
+.fc-drop-panel p{padding:0 26px 24px 56px;font-size:.98rem;line-height:1.55;color:rgba(243,243,243,.72)}
 
 /* shared responsive / reduced-motion fallback for the carousel */
 .predict-fallback-note{display:none}
@@ -407,10 +418,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 <div class="divider"><div class="line"></div><div class="cubes"><div class="inner"><div class="cube"></div><div class="cube"></div></div></div></div>
 <section class="predict" id="predict">
   <div class="opt-label">Option A — feature carousel</div>
-  <div class="predict-track" data-slides="2">
+  <div class="predict-track" data-slides="3">
     <div class="predict-stage">
-      <!-- Slide 1: Predict — card LEFT, blue RIGHT -->
-      <div class="feat-slide active" data-feat="predict">
+      <!-- Slide 1: Spot — blue LEFT, card RIGHT -->
+      <div class="feat-slide active" data-feat="spot">
+        <div class="feat-grid">
+          <div class="feat-blue">
+            <svg class="plus tl" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <svg class="plus tr" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <svg class="plus bl" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <svg class="plus br" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
+            <h2>Spot</h2>
+            <p>One book, every venue on Sui. Orders route through the same order book that powers the whole ecosystem, so depth compounds instead of fragmenting.</p>
+          </div>
+          <div class="feat-card">
+            <span class="feat-kicker">Spot</span>
+            <ul class="feat-points">
+              <li><span class="fb"></span>Trade on Sui's deepest liquidity</li>
+              <li><span class="fb"></span>One order book powers the entire ecosystem</li>
+              <li><span class="fb"></span>Tighter spreads and deeper markets, without fragmented venues</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- Slide 2: Predict — card LEFT (points), blue RIGHT -->
+      <div class="feat-slide" data-feat="predict">
         <div class="feat-grid">
           <div class="feat-card">
             <span class="feat-kicker">Predict</span>
@@ -431,41 +463,28 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
           </div>
         </div>
       </div>
-      <!-- Slide 2: Spot — blue LEFT, card RIGHT (vice versa) -->
-      <div class="feat-slide" data-feat="spot">
+      <!-- Slide 3: Predict — FAQ text LEFT, blue RIGHT -->
+      <div class="feat-slide" data-feat="predict">
         <div class="feat-grid">
+          <div class="feat-card feat-card--text">
+            <span class="feat-kicker">Predict</span>
+            <h3 class="feat-q">How does Predict differ from other prediction markets?</h3>
+            <p class="feat-a">Most prediction markets ask a single yes-or-no question, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. Predict quotes any level, like 94,820 right now, in any direction, across timeframes from one minute to a month. A single pool stands behind every quote, which is how the whole range stays open.</p>
+          </div>
           <div class="feat-blue">
             <svg class="plus tl" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
             <svg class="plus tr" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
             <svg class="plus bl" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
             <svg class="plus br" viewBox="0 0 12 12" fill="none"><path d="M6.75 5.25H12V6.75H6.75V12H5.25V6.75H0V5.25H5.25V0H6.75V5.25Z" fill="currentColor"/></svg>
-            <h2>Spot</h2>
-            <p>One book, every venue on Sui. Orders route through the same order book that powers the whole ecosystem, so depth compounds instead of fragmenting.</p>
-          </div>
-          <div class="feat-card">
-            <span class="feat-kicker">Spot</span>
-            <ul class="feat-points">
-              <li><span class="fb"></span>Trade on Sui's deepest liquidity</li>
-              <li><span class="fb"></span>One order book powers the entire ecosystem</li>
-              <li><span class="fb"></span>Tighter spreads and deeper markets, without fragmented venues</li>
-            </ul>
+            <h2>Predict</h2>
+            <p>A prediction and options market where every price is tradable. Quote any level, in any direction, across timeframes from one minute to a month.</p>
           </div>
         </div>
       </div>
       <div class="predict-progress">
-        <button class="pseg active" aria-label="Show Predict"></button>
-        <button class="pseg" aria-label="Show Spot"></button>
-      </div>
-    </div>
-  </div>
-  <div class="predict-foot">
-    <div class="predict-faq" data-reveal>
-      <button class="faq-toggle" id="predict-faq-toggle" aria-expanded="false" aria-controls="predict-faq-panel">
-        <span>How does Predict differ from other prediction markets?</span>
-        <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <div class="faq-panel" id="predict-faq-panel" role="region" aria-labelledby="predict-faq-toggle">
-        <p>Most prediction markets ask a single yes-or-no question, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. Predict quotes any level, like 94,820 right now, in any direction, across timeframes from one minute to a month. A single pool stands behind every quote, which is how the whole range stays open.</p>
+        <button class="pseg active" aria-label="Show Spot"></button>
+        <button class="pseg" aria-label="Show Predict"></button>
+        <button class="pseg" aria-label="Show how Predict differs"></button>
       </div>
     </div>
   </div>
@@ -528,7 +547,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
           <div class="fc-item"><span class="fb"></span><p>Any price level, priced continuously across the whole range.</p></div>
           <div class="fc-item"><span class="fb"></span><p>Range markets — take a position inside a band, or on either direction out of it.</p></div>
           <div class="fc-item"><span class="fb"></span><p>Leverage inside the contract, with no margin call and downside capped at zero.</p></div>
-          <div class="fc-item"><span class="fb"></span><p>One pool stands behind every quote.</p></div>
+          <div class="fc-item fc-item--drop">
+            <button class="fc-drop-toggle" aria-expanded="false" aria-controls="fc-drop-panel">
+              <span class="fb"></span>
+              <span class="fc-drop-q">How does Predict differ from other prediction markets?</span>
+              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </button>
+            <div class="fc-drop-panel" id="fc-drop-panel" role="region">
+              <p>Most prediction markets ask a single yes-or-no question, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. Predict quotes any level, like 94,820 right now, in any direction, across timeframes from one minute to a month. A single pool stands behind every quote, which is how the whole range stays open.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -782,18 +810,25 @@ const MARKET_DATA = [
   setActive(0);update();
 })();
 
-/* ===================== PREDICT FAQ ACCORDION ===================== */
+/* ===================== DROPDOWN ACCORDIONS ===================== */
 (function(){
-  const t=document.getElementById('predict-faq-toggle');
-  if(!t)return;
-  const panel=document.getElementById('predict-faq-panel');
-  t.addEventListener('click',()=>{
-    const open=t.getAttribute('aria-expanded')==='true';
-    t.setAttribute('aria-expanded',String(!open));
-    panel.style.maxHeight=open?'0px':panel.scrollHeight+'px';
+  const toggles=[...document.querySelectorAll('.fc-drop-toggle')];
+  toggles.forEach(t=>{
+    const panel=document.getElementById(t.getAttribute('aria-controls'));
+    if(!panel)return;
+    t.addEventListener('click',()=>{
+      const open=t.getAttribute('aria-expanded')==='true';
+      t.setAttribute('aria-expanded',String(!open));
+      panel.style.maxHeight=open?'0px':panel.scrollHeight+'px';
+    });
   });
   window.addEventListener('resize',()=>{
-    if(t.getAttribute('aria-expanded')==='true')panel.style.maxHeight=panel.scrollHeight+'px';
+    toggles.forEach(t=>{
+      if(t.getAttribute('aria-expanded')==='true'){
+        const panel=document.getElementById(t.getAttribute('aria-controls'));
+        if(panel)panel.style.maxHeight=panel.scrollHeight+'px';
+      }
+    });
   });
 })();
 
