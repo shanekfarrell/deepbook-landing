@@ -181,14 +181,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .fc-item{display:flex;gap:16px;align-items:flex-start;padding:24px 26px;border:1px solid var(--ink-2);border-radius:6px;background:#0c0c0c}
 .fc-item .fb{width:14px;height:14px;background:var(--blue);flex:0 0 auto;margin-top:4px}
 .fc-item p{font-size:1.05rem;color:rgba(243,243,243,.92);line-height:1.4}
-/* dropdown card — inverted from the blue Launch App button: white bg, blue text */
-.fc-item--drop{padding:0;background:#fff;border-color:#fff}
-.fc-drop-toggle{width:100%;display:flex;align-items:center;gap:16px;padding:22px 24px;text-align:left;color:var(--blue)}
-.fc-drop-q{flex:1;font-size:1rem;font-weight:600;line-height:1.3}
-.fc-drop-toggle .chev{flex:0 0 auto;width:19px;height:19px;color:var(--blue);transition:transform .35s var(--ease)}
-.fc-drop-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
-.fc-drop-panel{overflow:hidden;max-height:0;transition:max-height .45s var(--ease);background:#fff}
-.fc-drop-panel p{padding:0 24px 22px;font-size:.94rem;line-height:1.55;color:#123b7a}
+.learn-more-wrap{display:flex;justify-content:center;padding-top:64px}
 
 /* ============ FAQs (bottom of page) ============ */
 .faqs{padding:110px 0 120px}
@@ -427,17 +420,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
           <div class="fc-item"><span class="fb"></span><p>Any price level, priced continuously across the whole range.</p></div>
           <div class="fc-item"><span class="fb"></span><p>Range markets — take a position inside a band, or on either direction out of it.</p></div>
           <div class="fc-item"><span class="fb"></span><p>Leverage inside the contract, with no margin call and downside capped at zero.</p></div>
-          <div class="fc-item fc-item--drop">
-            <button class="fc-drop-toggle" aria-expanded="false" aria-controls="fc-drop-panel">
-              <span class="fc-drop-q">How does Predict differ from other prediction markets?</span>
-              <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
-            <div class="fc-drop-panel" id="fc-drop-panel" role="region">
-              <p>Most prediction markets ask a single yes-or-no question, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. Predict quotes any level, like 94,820 right now, in any direction, across timeframes from one minute to a month. A single pool stands behind every quote, which is how the whole range stays open.</p>
-            </div>
-          </div>
         </div>
       </div>
+    </div>
+    <div class="learn-more-wrap">
+      <a href="#faqs" class="btn btn--blue">Learn More</a>
     </div>
   </div>
 </section>
@@ -513,7 +500,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
         </button>
         <div class="faq-panel" id="faq-panel-2">
           <div class="faq-a">
-            <p>A prediction market gives you a fixed set of yes-or-no bets that someone else defined, and the position you hold is a dead-end token you cannot use elsewhere. Predict works differently. You name any price you want, including ranges between two prices, and the market is created on demand and priced for you in real time. One shared pool takes the other side of every trade, so a quote is always available, where prediction markets depend on finding another taker. The closest traditional analog is asking a derivatives desk for a custom quote, automated and running onchain.</p>
+            <p>A prediction market gives you a fixed set of yes-or-no bets that someone else defined, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. The position you hold is a dead-end token you cannot use elsewhere. Predict works differently. You name any price you want, like 94,820 right now, in any direction, including ranges between two prices, across timeframes from one minute to a month, and the market is created on demand and priced for you in real time. One shared pool takes the other side of every trade, so a quote is always available, where prediction markets depend on finding another taker. The closest traditional analog is asking a derivatives desk for a custom quote, automated and running onchain.</p>
           </div>
         </div>
       </div>
@@ -719,9 +706,9 @@ const MARKET_DATA = [
   document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
 })();
 
-/* ===================== DROPDOWN ACCORDIONS (Option B card + bottom FAQs) ===================== */
+/* ===================== FAQ ACCORDIONS ===================== */
 (function(){
-  const toggles=[...document.querySelectorAll('.fc-drop-toggle, .faq-toggle')];
+  const toggles=[...document.querySelectorAll('.faq-toggle')];
   toggles.forEach(t=>{
     const panel=document.getElementById(t.getAttribute('aria-controls'));
     if(!panel)return;
