@@ -105,7 +105,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 /* ============================ HERO ============================ */
 .hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;
   text-align:center;overflow:hidden;padding:120px var(--pad) 80px}
-.hero .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;background:#000}
+.hero .hero-video{position:absolute;top:0;left:var(--pad);width:calc(100% - var(--pad)*2);height:100%;object-fit:cover;z-index:0;background:#000}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;
   background:radial-gradient(120% 80% at 50% 30%,transparent 30%,rgba(0,0,0,.55) 78%,#000 100%)}
 .hero .content{position:relative;z-index:2;max-width:820px;display:flex;flex-direction:column;align-items:center;gap:36px}
@@ -121,10 +121,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .sect-label{font-size:.8rem;letter-spacing:.05em;color:var(--blue);margin-bottom:18px;font-weight:500}
 .sect h2{font-size:clamp(1.9rem,3.6vw,2.9rem);font-weight:600;letter-spacing:-.025em;line-height:1.14;margin-bottom:20px;max-width:17ch}
 .sect .lede{font-size:1.05rem;color:rgba(243,243,243,.62);max-width:660px;margin-bottom:40px;line-height:1.6}
-
-/* ============================ APP WALKTHROUGH ============================ */
-.walkthrough-wrap{padding:0 0 56px;display:flex;justify-content:center}
-.walkthrough-wrap .walk{max-width:900px}
 
 /* ============================ STATS ============================ */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--ink-2)}
@@ -171,7 +167,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 
 /* ============ FAQs (bottom of page) ============ */
 .faqs{padding:110px 0 120px}
-.faqs h2{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:600;letter-spacing:-.02em;margin-bottom:40px}
+.faqs h2{font-size:clamp(2rem,3.6vw,2.9rem);font-weight:600;letter-spacing:-.02em;margin-bottom:0}
+.faqs-grid{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start}
 .faqs-list{max-width:820px;border-top:1px solid var(--ink-2)}
 .faq-item{border-bottom:1px solid var(--ink-2)}
 .faq-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
@@ -189,20 +186,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 @media(max-width:900px){
   .fc-grid{grid-template-columns:1fr;gap:64px}
 }
-
-/* video / walkthrough panel */
-.walk{position:relative;width:100%;aspect-ratio:16/9;border:1px solid rgba(255,255,255,.14);border-radius:6px;
-  background-image:url('assets/trading-app.png');background-size:cover;background-position:center 30%;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;overflow:hidden}
-.walk::before{content:"";position:absolute;inset:0;
-  background:radial-gradient(circle at 50% 55%,rgba(0,0,0,.14),rgba(0,0,0,.42) 72%),linear-gradient(rgba(0,0,0,.05),rgba(0,0,0,.22))}
-.walk .play{width:60px;height:60px;border-radius:50%;background:var(--blue);color:#fff;
-  display:flex;align-items:center;justify-content:center;position:relative;z-index:2;transition:transform .3s var(--ease),background .3s}
-.walk .play svg{width:24px;height:24px;margin-left:3px}
-.walk .play:hover{transform:scale(1.08);background:#1559c9}
-.walk .play::after{content:"";position:absolute;inset:-10px;border-radius:50%;border:1px solid rgba(30,110,243,.4);animation:pulse2 2.6s ease-out infinite}
-@keyframes pulse2{0%{transform:scale(.9);opacity:.8}100%{transform:scale(1.5);opacity:0}}
-.walk .vcap{position:relative;z-index:2;font-size:.85rem;color:rgba(243,243,243,.8);letter-spacing:.01em;padding:0 20px;text-align:center;text-shadow:0 2px 10px rgba(0,0,0,.6)}
 
 /* ============================ CUSTODY (LIGHT) ============================ */
 .custody{background:var(--paper);color:#000}
@@ -248,6 +231,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 /* ============================ RESPONSIVE ============================ */
 @media(max-width:991px){
   .custody-grid{grid-template-columns:1fr}
+  .faqs-grid{grid-template-columns:1fr}
+  .faqs h2{margin-bottom:24px}
   .stats{grid-template-columns:1fr 1fr}
   .stat:nth-child(2n){border-right:none}
   .footer-grid{grid-template-columns:1fr}
@@ -307,20 +292,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   </video>
   <div class="content">
     <h1 class="h1" data-reveal>Pick the price. Set the range. Trade the minute.</h1>
-    <p class="hero-sub" data-reveal>Spot + short-duration prediction markets on DeepBook.</p>
+    <p class="hero-sub" data-reveal>Spot and short-duration prediction markets on DeepBook</p>
     <div class="btn-row" data-reveal>
       <a href="https://app.deepbook.tech" class="btn btn--blue" data-cta="primary" data-analytics="hero-primary">Start Trading</a>
-      <a href="#stats" class="btn btn--ghost" data-analytics="hero-secondary">View stats</a>
-    </div>
-  </div>
-</section>
-
-<!-- ===================== SIZZLE VIDEO ===================== -->
-<section class="walkthrough-wrap">
-  <div class="container">
-    <div class="walk" role="img" aria-label="DeepBook App sizzle video" data-reveal>
-      <button class="play" aria-label="Play video"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
-      <span class="vcap">Sizzle video</span>
     </div>
   </div>
 </section>
@@ -459,8 +433,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 <div class="divider"><div class="line"></div><div class="cubes"><div class="inner"><div class="cube"></div><div class="cube"></div></div></div></div>
 <section class="faqs" id="faqs">
   <div class="container">
-    <h2 data-reveal>FAQs</h2>
-    <div class="faqs-list">
+    <div class="faqs-grid">
+      <h2 data-reveal>FAQs</h2>
+      <div class="faqs-list">
       <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-1">
           <span>Why does shared liquidity matter?</span>
@@ -520,6 +495,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
           </div>
         </div>
       </div>
+    </div>
     </div>
   </div>
 </section>
