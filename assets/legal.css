@@ -1,0 +1,66 @@
+/* ============================================================================
+   LEGAL ARTICLE STYLES — layered on top of assets/site.css (tokens/nav/footer).
+   Shared by privacy-policy.html and terms-of-use.html.
+   ============================================================================ */
+
+.legal-hero{padding:160px var(--pad) 56px;border-bottom:1px solid var(--ink-2)}
+.legal-hero .inner{max-width:var(--container);margin:0 auto}
+.legal-eyebrow{font-size:.8rem;letter-spacing:.05em;color:var(--blue);margin-bottom:16px;font-weight:500}
+.legal-title{font-size:clamp(2rem,4.2vw,3rem);font-weight:600;letter-spacing:-.02em;line-height:1.08;margin-bottom:14px}
+.legal-updated{font-size:.9rem;color:rgba(243,243,243,.55)}
+
+.legal-shell{max-width:var(--container);margin:0 auto;padding:64px var(--pad) 0;display:grid;
+  grid-template-columns:240px minmax(0,1fr);gap:64px;align-items:start}
+@media(max-width:900px){.legal-shell{grid-template-columns:1fr;padding-top:48px}}
+
+.legal-toc{position:sticky;top:88px}
+@media(max-width:900px){.legal-toc{position:static;margin-bottom:8px}}
+.legal-toc-label{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:rgba(243,243,243,.4);margin-bottom:14px}
+.legal-toc nav{display:flex;flex-direction:column;gap:1px;max-height:70vh;overflow-y:auto}
+.legal-toc a{display:block;padding:7px 10px;border-radius:4px;font-size:.86rem;color:rgba(243,243,243,.6);
+  border-left:2px solid transparent;transition:background .15s,color .15s}
+.legal-toc a:hover{background:rgba(255,255,255,.04);color:#fff}
+
+.legal-article{max-width:720px;padding-bottom:100px}
+.legal-article > p.lede{font-size:1.02rem;line-height:1.7;color:rgba(243,243,243,.75);margin-bottom:44px}
+.legal-article section{padding-top:44px;border-top:1px solid var(--ink-2);margin-top:44px}
+.legal-article section:first-of-type{padding-top:0;border-top:none;margin-top:0}
+.legal-article h2{display:flex;align-items:baseline;gap:12px;font-size:1.35rem;font-weight:600;letter-spacing:-.01em;margin-bottom:18px;scroll-margin-top:100px}
+.legal-article h2 .num{font-size:1rem;color:var(--blue);font-weight:600;flex:0 0 auto}
+.legal-article h3{font-size:1.05rem;font-weight:600;margin:28px 0 12px;scroll-margin-top:100px}
+.legal-article p{font-size:.96rem;line-height:1.75;color:rgba(243,243,243,.78);margin-bottom:16px}
+.legal-article p:last-child{margin-bottom:0}
+.legal-article ul,.legal-article ol{margin:0 0 18px;padding-left:22px}
+.legal-article li{font-size:.96rem;line-height:1.7;color:rgba(243,243,243,.78);margin-bottom:10px}
+.legal-article li::marker{color:var(--blue)}
+.legal-article ul ul,.legal-article ol ul,.legal-article ul ol,.legal-article ol ol{margin-top:10px}
+.legal-article strong{color:#fff;font-weight:600}
+.legal-article a{color:var(--blue-bright);text-decoration:underline;text-underline-offset:2px}
+.legal-article a:hover{color:#fff}
+
+/* Callout for high-consequence notices, e.g. the arbitration notice */
+.legal-callout{background:var(--ink);border:1px solid var(--ink-2);border-left:3px solid var(--blue);
+  border-radius:0 6px 6px 0;padding:18px 22px;margin:0 0 32px}
+.legal-callout p{color:rgba(243,243,243,.85);margin-bottom:0}
+.legal-callout p + p{margin-top:12px}
+
+/* Emphasis blocks for ALL-CAPS risk/disclaimer clauses — preserved verbatim from source,
+   only visually set apart so a dense wall of caps stays scannable. */
+.legal-warn{background:rgba(255,107,107,.06);border:1px solid rgba(255,107,107,.25);border-radius:6px;
+  padding:18px 22px;margin:0 0 24px}
+.legal-warn p{color:rgba(243,243,243,.85);font-size:.88rem;line-height:1.75;letter-spacing:.005em;margin-bottom:12px}
+.legal-warn p:last-child{margin-bottom:0}
+
+/* Placeholder values not yet finalized (address, email, interface URL) — flagged, not hidden. */
+.tbd{color:var(--orange);border-bottom:1px dashed var(--orange);font-weight:500;white-space:nowrap}
+
+.legal-table-wrap{overflow-x:auto;margin-bottom:24px;border:1px solid var(--ink-2);border-radius:6px}
+.legal-article table{width:100%;border-collapse:collapse;font-size:.85rem;min-width:560px}
+.legal-article th{text-align:left;padding:10px 14px;background:var(--ink);color:rgba(243,243,243,.55);
+  font-weight:500;font-size:.76rem;letter-spacing:.02em;border-bottom:1px solid var(--ink-2)}
+.legal-article td{padding:10px 14px;border-bottom:1px solid var(--ink-2);color:rgba(243,243,243,.78);text-align:center}
+.legal-article td:first-child{text-align:left;color:#fff}
+.legal-article tr:last-child td{border-bottom:none}
+
+.legal-contact{background:var(--ink);border:1px solid var(--ink-2);border-radius:8px;padding:22px 24px}
+.legal-contact p{margin-bottom:4px}
