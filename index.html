@@ -2,9 +2,212 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+
+<!-- ============================================================================
+     DEV HANDOFF NOTES — items marked TODO need a decision or a backend value.
+     Everything not marked TODO is final and can ship as-is.
+
+     TODO(domain): every absolute URL below, plus the canonical, the OG/Twitter
+       image URLs, robots.txt and sitemap.xml, uses PLACEHOLDER_DOMAIN. Find and
+       replace it once the production domain is settled (deepbook.tech vs other).
+       Do not ship a canonical pointing at a vercel.app preview.
+     TODO(title): current title is character-identical to www.deepbook.tech, which
+       makes the two pages duplicates if both are indexable. Suggested replacement,
+       pending the Predict status question below:
+       "DeepBook App | Onchain Spot and Predict Trading on Sui"
+     TODO(legal): Predict is described on this page as live. Sui's own docs state
+       Predict has no Mainnet deployment. Confirm before the page is indexable, and
+       keep this page, the docs and the FAQ schema consistent.
+     TODO(legal): no operator/ownership statement exists yet. Once legal supplies
+       the one-liner, add it to the Organization block below (legalName /
+       parentOrganization) AND to the visible page copy, using identical wording.
+     ============================================================================ -->
+
 <title>DeepBook on Sui | Fully On-Chain Order Book for DeFi</title>
 <meta name="description" content="DeepBook is a fully on-chain order book on Sui powering Spot and Predict markets with deep liquidity and fast settlement.">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- TODO(domain): set to the real production URL. -->
+<link rel="canonical" href="https://PLACEHOLDER_DOMAIN/">
+<!-- max-snippet:-1 lifts Google's snippet-length cap so longer passages can be quoted. -->
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+
+<!-- Open Graph — TODO(og): image and final copy still undecided. The tags are wired
+     so a share preview works the moment an image is dropped at the path below.
+     Produce at 1200x630. Until then, links shared to Discord/Telegram/X will show
+     a title and description but no image. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="DeepBook">
+<meta property="og:title" content="DeepBook on Sui | Fully On-Chain Order Book for DeFi">
+<meta property="og:description" content="DeepBook is a fully on-chain order book on Sui powering Spot and Predict markets with deep liquidity and fast settlement.">
+<meta property="og:url" content="https://PLACEHOLDER_DOMAIN/">
+<meta property="og:image" content="https://PLACEHOLDER_DOMAIN/assets/og-deepbook-app.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="DeepBook App — onchain spot and prediction markets on Sui.">
+<meta property="og:locale" content="en_US">
+
+<!-- X / Twitter — account confirmed: https://x.com/DeepBookonSui -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@DeepBookonSui">
+<meta name="twitter:creator" content="@DeepBookonSui">
+<meta name="twitter:title" content="DeepBook on Sui | Fully On-Chain Order Book for DeFi">
+<meta name="twitter:description" content="DeepBook is a fully on-chain order book on Sui powering Spot and Predict markets with deep liquidity and fast settlement.">
+<meta name="twitter:image" content="https://PLACEHOLDER_DOMAIN/assets/og-deepbook-app.png">
+
+<!-- Icons. icon.svg is the DeepBook "D" mark rebuilt as vector from the inline logo
+     path, so there is no dependency on the old Webflow CDN. apple-touch-icon.png is
+     the existing 180x180 brand asset (Safari will not accept SVG here).
+     TODO(icons): generate /favicon.ico and site.webmanifest from the same mark for
+     full legacy + installed-PWA coverage. -->
+<link rel="icon" href="assets/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+<!-- ===================== STRUCTURED DATA: ENTITY GRAPH =====================
+     Validate with Google's Rich Results Test and the Schema.org validator after
+     the domain find-and-replace.
+     TODO(legal): ownership is deliberately NOT asserted here. Once legal supplies
+       the operator sentence, add "legalName" and (if applicable)
+       "parentOrganization" to the Organization node.
+     TODO(brand): github.com/MystenLabs/deepbookv3 is intentionally LEFT OUT of
+       sameAs. sameAs is an identity assertion, so listing it would tell a model
+       this entity is the MystenLabs org — the opposite of the brand separation.
+       The footer link stays; adding it here is a brand/legal call, not a dev one.
+     ========================================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://PLACEHOLDER_DOMAIN/#organization",
+      "name": "DeepBook",
+      "alternateName": ["DeepBook Protocol", "DeepBook App"],
+      "url": "https://PLACEHOLDER_DOMAIN/",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://PLACEHOLDER_DOMAIN/assets/icon.svg"
+      },
+      "description": "DeepBook is a fully onchain central limit order book on the Sui network. It provides shared liquidity for spot markets and powers the DeepBook App, where traders access spot and prediction markets with self-custodial settlement.",
+      "foundingDate": "2023",
+      "sameAs": [
+        "https://x.com/DeepBookonSui",
+        "https://discord.com/invite/deepbook",
+        "https://www.coingecko.com/en/coins/deepbook",
+        "https://coinmarketcap.com/currencies/deepbook/",
+        "https://defillama.com/protocol/deepbook"
+      ],
+      "knowsAbout": [
+        "onchain order book",
+        "central limit order book",
+        "Sui blockchain",
+        "decentralized exchange liquidity",
+        "onchain prediction markets"
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://PLACEHOLDER_DOMAIN/#website",
+      "url": "https://PLACEHOLDER_DOMAIN/",
+      "name": "DeepBook",
+      "publisher": { "@id": "https://PLACEHOLDER_DOMAIN/#organization" },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://PLACEHOLDER_DOMAIN/#webpage",
+      "url": "https://PLACEHOLDER_DOMAIN/",
+      "name": "DeepBook on Sui | Fully On-Chain Order Book for DeFi",
+      "isPartOf": { "@id": "https://PLACEHOLDER_DOMAIN/#website" },
+      "about": { "@id": "https://PLACEHOLDER_DOMAIN/#organization" },
+      "datePublished": "2026-09-01",
+      "dateModified": "2026-09-01"
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://PLACEHOLDER_DOMAIN/#app",
+      "name": "DeepBook App",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Web",
+      "url": "https://app.deepbook.tech/",
+      "publisher": { "@id": "https://PLACEHOLDER_DOMAIN/#organization" },
+      "featureList": [
+        "Spot trading against a shared onchain order book",
+        "Prediction markets at any price level, including range positions, across timeframes from one minute to two weeks",
+        "Self-custodial settlement, assets remain in the user wallet",
+        "Public API, SDK and indexer endpoints"
+      ],
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free to use. Trading fees apply per the published fee schedule."
+      }
+    }
+  ]
+}
+</script>
+
+<!-- ===================== STRUCTURED DATA: FAQ =====================
+     Answer text below is copied VERBATIM from the rendered accordions. If the
+     on-page copy changes, change it here too — a mismatch between schema and
+     rendered text is a policy violation and gets the markup ignored.
+     ================================================================ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "@id": "https://PLACEHOLDER_DOMAIN/#faq",
+  "isPartOf": { "@id": "https://PLACEHOLDER_DOMAIN/#webpage" },
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Why does shared liquidity matter?",
+      "url": "https://PLACEHOLDER_DOMAIN/#faq-shared-liquidity",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Onchain liquidity is often divided across separate apps and order books, leaving less depth available in each venue. DeepBook's spot market allows multiple apps to route through the same book, so liquidity can compound rather than fragment. For traders moving meaningful size, greater shared depth can support tighter spreads and lower slippage."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What is Predict, and how is it different from a prediction market?",
+      "url": "https://PLACEHOLDER_DOMAIN/#faq-what-is-predict",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A prediction market gives you a fixed set of yes-or-no bets that someone else defined, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. The position you hold is a dead-end token you cannot use elsewhere. Predict works differently. You name any price you want, like 94,820 right now, in any direction, including ranges between two prices, across timeframes from one minute to two weeks, and the market is created on demand and priced for you in real time. One shared pool takes the other side of every trade, so a quote is always available, where prediction markets depend on finding another taker. The closest traditional analog is asking a derivatives desk for a custom quote, automated and running onchain."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which jurisdictions can't access the DeepBook trading platform?",
+      "url": "https://PLACEHOLDER_DOMAIN/#faq-jurisdictions",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The following jurisdictions are excluded from accessing the DeepBook trading platform: Australia, Belgium, France, Germany, Hungary, Italy, Netherlands, Ontario, Poland, Quebec, Russia, Singapore, Slovakia, Taiwan, Thailand, the United Kingdom, and the United States. OFAC-sanctioned jurisdictions: Iran, Cuba, North Korea, and the Crimea, Donetsk, and Luhansk regions of Ukraine."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will more Spot markets be added over time?",
+      "url": "https://PLACEHOLDER_DOMAIN/#faq-more-spot-markets",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "DeepBook App is designed to provide access to markets available on the DeepBook protocol. Additional trading pairs may become available over time as the app expands. Check the app for the latest supported markets. DeepBook will continue to assess other asset support — look for updates on app.deepbook.tech and on X at @DeepBookonSui."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What assets are currently supported for Predict (placing prediction market positions) on DeepBook App?",
+      "url": "https://PLACEHOLDER_DOMAIN/#faq-predict-assets",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "BTC is currently the only supported asset. DeepBook will continue to assess other assets. Look for updates on app.deepbook.tech and on X at @DeepBookonSui."
+      }
+    }
+  ]
+}
+</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -179,6 +382,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .faqs-grid{display:grid;grid-template-columns:220px 1fr;gap:56px;align-items:start}
 .faqs-list{max-width:820px;border-top:1px solid var(--ink-2)}
 .faq-item{border-bottom:1px solid var(--ink-2)}
+/* Questions are real h3s so they appear in the document outline and are individually
+   citable; the h3 carries no visual styling of its own — the button keeps all of it. */
+.faq-q{margin:0;font-size:inherit;font-weight:inherit;line-height:inherit}
+.faq-item[id]{scroll-margin-top:108px}
 .faq-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
   padding:28px 0;font-size:clamp(1.02rem,1.7vw,1.2rem);font-weight:600;letter-spacing:-.01em;color:#fff;text-align:left}
 .faq-toggle .chev{flex:0 0 auto;width:22px;height:22px;color:var(--blue);transition:transform .35s var(--ease)}
@@ -456,33 +663,33 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
     <div class="faqs-grid">
       <h2 data-reveal>FAQs</h2>
       <div class="faqs-list">
-      <div class="faq-item">
-        <button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-1">
+      <div class="faq-item" id="faq-shared-liquidity">
+        <h3 class="faq-q"><button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-1">
           <span>Why does shared liquidity matter?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        </button></h3>
         <div class="faq-panel" id="faq-panel-1">
           <div class="faq-a">
             <p>Onchain liquidity is often divided across separate apps and order books, leaving less depth available in each venue. DeepBook's spot market allows multiple apps to route through the same book, so liquidity can compound rather than fragment. For traders moving meaningful size, greater shared depth can support tighter spreads and lower slippage.</p>
           </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-2">
+      <div class="faq-item" id="faq-what-is-predict">
+        <h3 class="faq-q"><button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-2">
           <span>What is Predict, and how is it different from a prediction market?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        </button></h3>
         <div class="faq-panel" id="faq-panel-2">
           <div class="faq-a">
             <p>A prediction market gives you a fixed set of yes-or-no bets that someone else defined, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. The position you hold is a dead-end token you cannot use elsewhere. Predict works differently. You name any price you want, like 94,820 right now, in any direction, including ranges between two prices, across timeframes from one minute to two weeks, and the market is created on demand and priced for you in real time. One shared pool takes the other side of every trade, so a quote is always available, where prediction markets depend on finding another taker. The closest traditional analog is asking a derivatives desk for a custom quote, automated and running onchain.</p>
           </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-3">
+      <div class="faq-item" id="faq-jurisdictions">
+        <h3 class="faq-q"><button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-3">
           <span>Which jurisdictions can't access the DeepBook trading platform?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        </button></h3>
         <div class="faq-panel" id="faq-panel-3">
           <div class="faq-a">
             <p>The following jurisdictions are excluded from accessing the DeepBook trading platform:</p>
@@ -493,22 +700,22 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
           </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-4">
+      <div class="faq-item" id="faq-more-spot-markets">
+        <h3 class="faq-q"><button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-4">
           <span>Will more Spot markets be added over time?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        </button></h3>
         <div class="faq-panel" id="faq-panel-4">
           <div class="faq-a">
             <p>DeepBook App is designed to provide access to markets available on the DeepBook protocol. Additional trading pairs may become available over time as the app expands. Check the app for the latest supported markets. DeepBook will continue to assess other asset support &mdash; look for updates on <a href="https://app.deepbook.tech" target="_blank" rel="noopener">app.deepbook.tech</a> and on X at <a href="https://x.com/DeepBookonSui" target="_blank" rel="noopener">@DeepBookonSui</a>.</p>
           </div>
         </div>
       </div>
-      <div class="faq-item">
-        <button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-5">
+      <div class="faq-item" id="faq-predict-assets">
+        <h3 class="faq-q"><button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-5">
           <span>What assets are currently supported for Predict (placing prediction market positions) on DeepBook App?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
+        </button></h3>
         <div class="faq-panel" id="faq-panel-5">
           <div class="faq-a">
             <p>BTC is currently the only supported asset. DeepBook will continue to assess other assets. Look for updates on <a href="https://app.deepbook.tech" target="_blank" rel="noopener">app.deepbook.tech</a> and on X at <a href="https://x.com/DeepBookonSui" target="_blank" rel="noopener">@DeepBookonSui</a>.</p>

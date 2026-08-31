@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  TODO(domain): replace PLACEHOLDER_DOMAIN with the production domain.
+  TODO(build): generate this from the build rather than maintaining it by hand, and
+    make sure <lastmod> reflects the real last-modified date. An inaccurate lastmod
+    is worse than none.
+  This mockup is a single page, so only the homepage is listed. Additional URLs
+  (/availability, /stats, /deep-token, /terms-of-use, /privacy-policy) should be
+  added here as those pages are built.
+-->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://PLACEHOLDER_DOMAIN/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>1.0</priority>
+  </url>
+</urlset>

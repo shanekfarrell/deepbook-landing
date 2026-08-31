@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" role="img" aria-label="DeepBook">
+  <title>DeepBook</title>
+  <!-- DeepBook "D" mark, same path as the inline nav logo, scaled and centred for a square icon. -->
+  <g transform="translate(7 12.75) scale(1.2506)">
+    <path d="M27.1875 9.96484C27.1875 14.4024 23.5899 18 19.1523 18H0V9.96484H27.1875ZM19.1523 0C23.5899 0 27.1875 3.59755 27.1875 8.03516H0V0H19.1523Z" fill="#1E6EF3"/>
+  </g>
+</svg>

@@ -1,0 +1,32 @@
+# robots.txt — DeepBook App
+#
+# TODO(domain): replace PLACEHOLDER_DOMAIN below with the production domain.
+# TODO(launch): while this is still a preview/mockup deployment, consider serving
+#   "Disallow: /" or an X-Robots-Tag: noindex header instead, so preview builds are
+#   not indexed and cited before the real launch. Flip to the allow list below on
+#   the day the production domain goes live.
+
+User-agent: *
+Allow: /
+
+# Answer engines and training crawlers are allowed explicitly rather than by
+# silence, so the decision is on the record. Remove any agent you want to exclude.
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+Sitemap: https://PLACEHOLDER_DOMAIN/sitemap.xml
