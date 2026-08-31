@@ -103,13 +103,16 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .mobile-actions{margin-top:auto;display:flex;gap:10px;flex-wrap:wrap}
 
 /* ============================ HERO ============================ */
-.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;
-  text-align:center;overflow:hidden;padding:120px var(--pad) 80px}
+.hero{position:relative;min-height:68vh;display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;padding:96px var(--pad) 72px}
 .hero .hero-video{position:absolute;top:0;left:var(--pad);width:calc(100% - var(--pad)*2);height:100%;object-fit:cover;z-index:0;background:#000}
 .hero::after{content:"";position:absolute;inset:0;z-index:1;
   background:radial-gradient(120% 80% at 50% 30%,transparent 30%,rgba(0,0,0,.55) 78%,#000 100%)}
-.hero .content{position:relative;z-index:2;max-width:820px;display:flex;flex-direction:column;align-items:center;gap:36px}
-.h1{font-size:clamp(2.7rem,7vw,4.6rem);font-weight:600;letter-spacing:-.03em;line-height:1.03}
+.hero .content{position:relative;z-index:2;max-width:820px;display:flex;flex-direction:column;align-items:center;gap:28px}
+/* Floor is set so the longest line ("Trade any timeframe.") still fits on one line at 360px —
+   below that the triad would wrap to four lines and lose its rhythm. */
+.h1{font-size:clamp(2.05rem,7vw,4.6rem);font-weight:600;letter-spacing:-.03em;line-height:1.06}
+.h1 span{display:block}
 .hero-sub{font-size:clamp(1rem,2vw,1.15rem);font-weight:500;color:rgba(243,243,243,.86);max-width:560px}
 
 /* reveal */
@@ -136,9 +139,8 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
 .stat .cube-t,.stat .cube-b{position:absolute;width:10px;height:10px;background:var(--blue)}
 .stat .cube-t{top:12px;left:12px}
 .stat .cube-b{bottom:12px;right:12px}
-.stat.b-white .cube-t,.stat.b-white .cube-b,.stat.b-grey .cube-t,.stat.b-grey .cube-b{background:#000}
-/* One stat card carries the video's orange accent instead of blue, so it stays a rare accent, not a repeat. */
-.stat.b-darkgrey .cube-t,.stat.b-darkgrey .cube-b{background:var(--orange)}
+/* All four cards use the one brand accent. Mixed black/blue/orange corners read as arbitrary;
+   orange is now reserved exclusively for the Programmatic access section, where it means something. */
 
 /* ============================ CARDS ============================ */
 .cards-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
@@ -292,8 +294,10 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
     <source src="assets/hero-minute-market.mp4" type="video/mp4">
   </video>
   <div class="content">
-    <h1 class="h1" data-reveal>Pick the price. Set the range. Trade the minute.</h1>
-    <p class="hero-sub" data-reveal>Spot and short-duration prediction markets on DeepBook</p>
+    <!-- Each sentence is its own block so the triad never breaks mid-phrase ("Set the / range")
+         on wide viewports. Mobile already wrapped this way naturally. -->
+    <h1 class="h1" data-reveal><span>Pick the price.</span> <span>Set the range.</span> <span>Trade any timeframe.</span></h1>
+    <p class="hero-sub" data-reveal>Spot and prediction markets on DeepBook</p>
     <div class="btn-row" data-reveal>
       <a href="https://app.deepbook.tech" class="btn btn--blue" data-cta="primary" data-analytics="hero-primary">Start Trading</a>
     </div>
@@ -308,7 +312,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   <div class="stats">
     <div class="stat b-white"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="41.2" data-suffix="M" data-prefix="$">$41.2M</span><span class="lab">24h volume</span></div>
     <div class="stat b-black"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-volume-count>$20B+</span><span class="lab">Cumulative volume</span></div>
-    <div class="stat b-grey"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="125.7" data-suffix="M">125.7M</span><span class="lab">DEEP Burnt from Trading Fees</span></div>
+    <div class="stat b-grey"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="125.7" data-suffix="M">125.7M</span><span class="lab">DEEP burned from trading fees</span></div>
     <div class="stat b-darkgrey"><span class="cube-t"></span><span class="cube-b"></span><span class="num" data-count="120" data-suffix="K+">120K+</span><span class="lab">On the app waitlist</span></div>
   </div>
 </section>
@@ -345,7 +349,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
         <p class="fc-lede">One book, every venue on Sui. Orders route through the same order book that powers the whole ecosystem, so depth compounds instead of fragmenting.</p>
         <div class="fc-list">
           <div class="fc-item"><span class="fb"></span><p>Trade on Sui's deepest liquidity.</p></div>
-          <div class="fc-item"><span class="fb"></span><p>One order book powers the entire ecosystem.</p></div>
+          <div class="fc-item"><span class="fb"></span><p>The same book behind 15+ apps on Sui.</p></div>
           <div class="fc-item"><span class="fb"></span><p>Tighter spreads and deeper markets, without jumping between fragmented venues.</p></div>
         </div>
       </div>
@@ -369,11 +373,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
             </svg>
           </div>
         </div>
-        <p class="fc-lede">A prediction and options market where every price is tradable. Quote any level, in any direction, across timeframes from one minute to a month.</p>
+        <p class="fc-lede">A prediction market where every price is tradable. Quote any level, in any direction, across timeframes from one minute to two weeks.</p>
         <div class="fc-list">
           <div class="fc-item"><span class="fb"></span><p>Any price level, priced continuously across the whole range.</p></div>
           <div class="fc-item"><span class="fb"></span><p>Range markets — take a position inside a band, or on either direction out of it.</p></div>
-          <div class="fc-item"><span class="fb"></span><p>Leverage inside the contract, with no margin call and downside capped at zero.</p></div>
+          <div class="fc-item"><span class="fb"></span><p>One shared pool takes the other side, so a quote is always there.</p></div>
         </div>
       </div>
     </div>
@@ -388,26 +392,27 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
   <div class="container">
     <div class="sect-label">Programmatic access</div>
     <h2 data-reveal>Run your own strategy against the book.</h2>
-    <p class="lede" data-reveal>Full API and SDK access from day one, with indexer endpoints and direct market-maker onboarding. No allowlist required to start reading the book.</p>
+    <p class="lede" data-reveal>Full API and SDK access from day one, with indexer endpoints and direct onboarding. No allowlist required to start reading the book — whether you are a desk running size or pointing an AI agent at rules you wrote yourself.</p>
     <div class="cards-grid cards-3" data-reveal>
       <div class="card"><span class="k">01</span><h3>API &amp; SDK</h3><p>Place, cancel, and settle orders directly against DeepBook.</p></div>
       <div class="card"><span class="k">02</span><h3>Indexer</h3><p>Historical fills, depth snapshots, and market data endpoints.</p></div>
-      <div class="card"><span class="k">03</span><h3>Market makers</h3><p>Direct onboarding for desks and programmatic liquidity providers.</p></div>
+      <div class="card"><span class="k">03</span><h3>Desks &amp; automated strategies</h3><p>Direct onboarding for market makers, bots, and agent-driven trading.</p></div>
     </div>
   </div>
 </section>
 
 <!-- ===================== CUSTODY & COUNTERPARTY RISK ===================== -->
-<!-- FLAG 6: Non-custodial architecture wording, the Mysten attribution, and the "live since 2023" figure all need
-     sign-off from Amir/Sam before publish. -->
+<!-- FLAG 6: Non-custodial architecture wording and the "live since 2023" figure need sign-off from
+     Amir/Sam before publish. Per brand guidance, do not name a building entity here — the association
+     stays inferable (Sui, the public repo) and is never stated on the page. -->
 <section class="sect custody">
   <div class="container">
     <div class="custody-grid">
       <div>
         <div class="sect-label">Custody &amp; counterparty risk</div>
         <h2 data-reveal>Your keys. Your capital.</h2>
-        <p class="lede" data-reveal>Funds settle onchain and stay in your wallet until an order fills. There is no house account holding your deposits and no withdrawal queue to get stuck in. The contracts are audited and bounty-protected, and the protocol is built by Mysten Labs, core contributor to Sui.</p>
-        <a href="https://github.com/sui-foundation/security-audits/blob/main/docs/deepbook_v3_audit_final.pdf" target="_blank" rel="noopener" class="btn btn--blue" data-reveal>Read the audit</a>
+        <p class="lede" data-reveal>Funds settle onchain and stay in your wallet until an order fills. There is no house account holding your deposits and no withdrawal queue to get stuck in. The contracts are audited, bounty-protected, and have been live on Sui since 2023.</p>
+        <a href="https://github.com/sui-foundation/security-audits/blob/main/docs/deepbook_v3_audit_final.pdf" target="_blank" rel="noopener" class="btn btn--blue" data-reveal>Read the Audit</a>
         <div class="custody-art" data-reveal>
           <div class="shield">
             <div class="ring"></div>
@@ -423,7 +428,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
         <div class="row"><span>Live since</span><span>2023</span></div>
         <div class="row"><span>Audits</span><span>Published</span></div>
         <div class="row"><span>Bug bounty</span><span>Active</span></div>
-        <div class="row"><span>Protocol</span><span>Mysten Labs</span></div>
+        <div class="row"><span>Network</span><span>Sui</span></div>
       </div>
     </div>
   </div>
@@ -455,13 +460,13 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
         </button>
         <div class="faq-panel" id="faq-panel-2">
           <div class="faq-a">
-            <p>A prediction market gives you a fixed set of yes-or-no bets that someone else defined, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. The position you hold is a dead-end token you cannot use elsewhere. Predict works differently. You name any price you want, like 94,820 right now, in any direction, including ranges between two prices, across timeframes from one minute to a month, and the market is created on demand and priced for you in real time. One shared pool takes the other side of every trade, so a quote is always available, where prediction markets depend on finding another taker. The closest traditional analog is asking a derivatives desk for a custom quote, automated and running onchain.</p>
+            <p>A prediction market gives you a fixed set of yes-or-no bets that someone else defined, like whether Bitcoin closes above $100,000 by December, and most of that menu has already settled at zero or one hundred. The position you hold is a dead-end token you cannot use elsewhere. Predict works differently. You name any price you want, like 94,820 right now, in any direction, including ranges between two prices, across timeframes from one minute to two weeks, and the market is created on demand and priced for you in real time. One shared pool takes the other side of every trade, so a quote is always available, where prediction markets depend on finding another taker. The closest traditional analog is asking a derivatives desk for a custom quote, automated and running onchain.</p>
           </div>
         </div>
       </div>
       <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false" aria-controls="faq-panel-3">
-          <span>Which countries are not able to engage with the DeepBook trading platform?</span>
+          <span>Which jurisdictions can't access the DeepBook trading platform?</span>
           <svg class="chev" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
         <div class="faq-panel" id="faq-panel-3">
@@ -492,7 +497,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
         </button>
         <div class="faq-panel" id="faq-panel-5">
           <div class="faq-a">
-            <p>BTC is currently the only asset supported, however DeepBook will continue to assess other asset support &mdash; look for updates on <a href="https://app.deepbook.tech" target="_blank" rel="noopener">app.deepbook.tech</a> and on X at <a href="https://x.com/DeepBookonSui" target="_blank" rel="noopener">@DeepBookonSui</a>.</p>
+            <p>BTC is currently the only supported asset. DeepBook will continue to assess other assets. Look for updates on <a href="https://app.deepbook.tech" target="_blank" rel="noopener">app.deepbook.tech</a> and on X at <a href="https://x.com/DeepBookonSui" target="_blank" rel="noopener">@DeepBookonSui</a>.</p>
           </div>
         </div>
       </div>
@@ -509,7 +514,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
     <p class="desc" data-reveal>Spot and Predict, live now.</p>
     <div class="btn-row" data-reveal>
       <a href="https://app.deepbook.tech" class="btn btn--blue" data-cta="primary" data-analytics="closing-primary">Start Trading</a>
-      <a href="#stats" class="btn btn--ghost" data-analytics="closing-secondary">View stats</a>
+      <a href="#stats" class="btn btn--ghost" data-analytics="closing-secondary">View Stats</a>
     </div>
   </div>
 </section>
@@ -528,7 +533,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offse
           <li><a href="https://app.deepbook.tech">Launch App</a></li>
           <li><a href="#spot">Spot</a></li>
           <li><a href="#predict">Predict</a></li>
-          <li><a href="#programmatic">API access</a></li></ul></div>
+          <li><a href="#programmatic">API Access</a></li></ul></div>
         <div class="f-col"><h4>Build</h4><ul>
           <li><a href="https://docs.sui.io/onchain-finance/deepbookv3/deepbook" target="_blank" rel="noopener">Docs</a></li>
           <li><a href="https://github.com/MystenLabs/deepbookv3" target="_blank" rel="noopener">GitHub</a></li>
