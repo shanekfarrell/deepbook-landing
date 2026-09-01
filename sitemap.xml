@@ -23,4 +23,9 @@
     <lastmod>2026-09-01</lastmod>
     <priority>0.3</priority>
   </url>
+  <url>
+    <loc>https://PLACEHOLDER_DOMAIN/help-center.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <priority>0.5</priority>
+  </url>
 </urlset>

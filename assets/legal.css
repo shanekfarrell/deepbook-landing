@@ -8,6 +8,7 @@
 .legal-eyebrow{font-size:.8rem;letter-spacing:.05em;color:var(--blue);margin-bottom:16px;font-weight:500}
 .legal-title{font-size:clamp(2rem,4.2vw,3rem);font-weight:600;letter-spacing:-.02em;line-height:1.08;margin-bottom:14px}
 .legal-updated{font-size:.9rem;color:rgba(243,243,243,.55)}
+.legal-subheader{font-size:1.05rem;color:rgba(243,243,243,.62);max-width:640px;margin-top:14px;line-height:1.6}
 
 .legal-shell{max-width:var(--container);margin:0 auto;padding:64px var(--pad) 0;display:grid;
   grid-template-columns:240px minmax(0,1fr);gap:64px;align-items:start}
@@ -64,3 +65,32 @@
 
 .legal-contact{background:var(--ink);border:1px solid var(--ink-2);border-radius:8px;padding:22px 24px}
 .legal-contact p{margin-bottom:4px}
+
+/* ============================================================================
+   HELP CENTER — accordion Q&A list (visual/interaction language copied from the
+   homepage FAQ section) and a distinct callout for [NEEDS CONFIRMATION] content
+   flags, so unresolved-before-launch items are visible rather than silently
+   invented.
+   ============================================================================ */
+.hc-list{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--ink-2)}
+.hc-item{border-bottom:1px solid var(--ink-2)}
+.hc-toggle{width:100%;display:flex;align-items:center;justify-content:space-between;gap:20px;
+  padding:22px 0;font-size:1rem;font-weight:600;letter-spacing:-.005em;color:#fff;text-align:left}
+.hc-toggle .chev{flex:0 0 auto;width:20px;height:20px;color:var(--blue);transition:transform .35s var(--ease)}
+.hc-toggle[aria-expanded="true"] .chev{transform:rotate(180deg)}
+.hc-panel{overflow:hidden;max-height:0;transition:max-height .45s var(--ease)}
+.hc-panel .hc-a{padding:0 0 26px;max-width:680px}
+.hc-panel .hc-a p{font-size:.94rem;line-height:1.7;color:rgba(243,243,243,.72);margin-bottom:14px!important}
+.hc-panel .hc-a p:last-child{margin-bottom:0!important}
+.hc-panel .hc-a ul,.hc-panel .hc-a ol{margin:0 0 14px;padding-left:20px}
+.hc-panel .hc-a li{font-size:.94rem;line-height:1.65;color:rgba(243,243,243,.72);margin-bottom:8px}
+.hc-panel .hc-a li::marker{color:var(--blue)}
+.hc-panel .hc-a strong{color:#fff;font-weight:600}
+.hc-panel .hc-a a{color:var(--blue-bright);text-decoration:underline;text-underline-offset:2px}
+.hc-panel .hc-a a:hover{color:#fff}
+
+.needs-confirm{background:rgba(242,147,61,.08);border:1px solid rgba(242,147,61,.3);border-radius:6px;
+  padding:14px 18px;margin:0 0 16px}
+.needs-confirm p{font-size:.86rem!important;line-height:1.6!important;color:rgba(243,243,243,.8)!important;margin-bottom:0!important}
+.needs-confirm .flag{display:inline-block;font-family:var(--font);font-size:.68rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:6px}
